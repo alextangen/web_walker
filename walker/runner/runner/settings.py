@@ -1,4 +1,4 @@
-# Scrapy settings for walker project
+# Scrapy settings for runner project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -7,14 +7,14 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'walker'
+BOT_NAME = 'runner'
 
-SPIDER_MODULES = ['walker.spiders']
-NEWSPIDER_MODULE = 'walker.spiders'
+SPIDER_MODULES = ['runner.spiders']
+NEWSPIDER_MODULE = 'runner.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'walker (+http://www.yourdomain.com)'
+#USER_AGENT = 'runner (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
@@ -37,21 +37,21 @@ ROBOTSTXT_OBEY = True
 #TELNETCONSOLE_ENABLED = False
 
 # Override the default request headers:
-DEFAULT_REQUEST_HEADERS = {
-   'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-   'Accept-Language': 'en',
-}
+#DEFAULT_REQUEST_HEADERS = {
+#   'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+#   'Accept-Language': 'en',
+#}
 
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'walker.middlewares.WalkerSpiderMiddleware': 543,
+#    'runner.middlewares.RunnerSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'walker.middlewares.WalkerDownloaderMiddleware': 543,
+#    'runner.middlewares.RunnerDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -63,7 +63,7 @@ DEFAULT_REQUEST_HEADERS = {
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 #ITEM_PIPELINES = {
-#    'walker.pipelines.WalkerPipeline': 300,
+#    'runner.pipelines.RunnerPipeline': 300,
 #}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
