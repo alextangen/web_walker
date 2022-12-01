@@ -9,7 +9,25 @@ from scrapy.linkextractors import LinkExtractor
 
 class WebWalkerSpider(CrawlSpider):
     name = 'web_walker'
-    start_urls = ['http://www.geeksforgeeks.org/']
+    # start_urls = ['http://www.geeksforgeeks.org/']
+    start_urls = []
+    cont = True
+
+    # Want to read in seeds from file walker_seeds.txt
+    seeds = open('walker/spiders/walker_seeds.txt', 'r')
+    num_url = 0
+
+    while cont:
+        num_url += 1
+        url = seeds.readline()
+        print("Read URL: " + url)
+        start_urls += [url]
+
+        if not url:
+            cont = False
+            break
+
+    print("Array of URLs: " + str(len(start_urls)))
 
     rules = (
         Rule(LinkExtractor(), callback='parse_item', follow=True),

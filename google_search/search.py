@@ -11,7 +11,9 @@ except ImportError:
 
 # to search
 query = argv[1]
-print(query)
+# print(query)
 
 for j in search(query, tld="co.in", num=10, stop=10, pause=2):
+    # file1 = open('../walker/walker/spiders/walker_seeds.txt', 'w')
+    # file1.writelines(j + "\n");
     print(j)
