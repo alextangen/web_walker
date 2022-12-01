@@ -1,3 +1,7 @@
+# This was one of the initial web crawlers identified:
+# https://www.geeksforgeeks.org/python-program-to-recursively-scrape-all-the-urls-of-the-website/
+# This implementation will not be used for the remainder of the project, but is included for completeness.
+
 from bs4 import BeautifulSoup
 import requests
 

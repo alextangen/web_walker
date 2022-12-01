@@ -1,3 +1,8 @@
+# The base of this code was copied from the below link:
+# https://www.proxiesapi.com/blog/recursively-scraping-webpages-with-scrapy.html.php
+# We will still be obeying the ROBOTS.txt file, and we will be taking in 'start_urls' 
+# from the google_search.py file.
+
 import scrapy
 from scrapy.spiders import CrawlSpider, Rule
 from scrapy.linkextractors import LinkExtractor
@@ -32,6 +37,10 @@ class WebWalkerSpider(CrawlSpider):
 
     def parse_item(self, response):
         print('Downloaded... ' + response.url)
+
+        # In here, we should parse the page, identify the count of words that 
+        # match the keywords, and weight them according to matches and extensions
+
         # filename = 'storage/' response.url.split("/")[-1]   '.html'
         # print('Saving as :' filename)
         # with open(filename, 'wb') as f:

@@ -1,8 +1,10 @@
-try:
-    from googlesearch import search
-    from sys import argv
-except ImportError:
-    print("Required Module is not found")
+# This google search implementation was located at the link below:
+# https://www.geeksforgeeks.org/performing-google-search-using-python-code/
+# This returns the top 10 google search results for the keywords provided 
+# by the user.
+
+from googlesearch import search
+from sys import argv
 
 # to search
 query = argv[1]
