@@ -3,8 +3,11 @@
 # This returns the top 10 google search results for the keywords provided 
 # by the user.
 
-from googlesearch import search
-from sys import argv
+try:
+    from googlesearch import search
+    from sys import argv
+except ImportError:
+    print("Unable to locate module.")
 
 # to search
 query = argv[1]
