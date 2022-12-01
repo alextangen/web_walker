@@ -2,7 +2,7 @@ import scrapy
 from scrapy.spiders import CrawlSpider, Rule
 from scrapy.linkextractors import LinkExtractor
 
-class WebWalkerSpider(scrapy.CrawlSpider):
+class WebWalkerSpider(CrawlSpider):
     name = 'web_walker'
     start_urls = ['http://www.geeksforgeeks.org/']
 
