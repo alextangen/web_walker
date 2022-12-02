@@ -6,6 +6,19 @@
 import scrapy
 from scrapy.spiders import CrawlSpider, Rule
 from scrapy.linkextractors import LinkExtractor
+import bisect
+
+suggested_URLs = []
+
+def lister(suggested_url):
+    global suggested_URLs
+    bisect.insort(suggested_URLs, suggested_url)
+    # print(suggested_URLs)
+    # print("\n\n\n\n")
+    # suggested_URLs += [suggested_url]
+
+def getURLs():
+    return suggested_URLs
 
 class WebWalkerSpider(CrawlSpider):
     name = 'web_walker'
@@ -20,14 +33,12 @@ class WebWalkerSpider(CrawlSpider):
     while cont:
         num_url += 1
         url = seeds.readline()
-        print("Read URL: " + url)
+        # print("Read URL: " + url)
         start_urls += [url]
 
         if not url:
             cont = False
             break
-
-    print("Array of URLs: " + str(len(start_urls)))
 
     rules = (
         Rule(LinkExtractor(), callback='parse_item', follow=True),
@@ -46,15 +57,31 @@ class WebWalkerSpider(CrawlSpider):
         'DOWNLOAD_MAXSIZE': 5592405,
         # Grabs xpath before site finish loading
         'DOWNLOAD_FAIL_ON_DATALOSS': False,
-
+        'DEPTH_LIMIT' : 5,
         'DEPTH_PRIORITY': 1,
         'SCHEDULER_DISK_QUEUE' : 'scrapy.squeues.PickleFifoDiskQueue',
         'SCHEDULER_MEMORY_QUEUE' :'scrapy.squeues.FifoMemoryQueue'
     }
 
-
     def parse_item(self, response):
-        print('Downloaded... ' + response.url)
+        # print('Downloaded... ' + response.url)
+        # print(response.text)
+        # print("ECDSA appears: " + str(response.text.count("ECDSA")))
+        suggested = {}
+
+        if (response.text.count(self.query) > 4):
+            suggested = tuple((response.text.count(self.query), response.url))
+            print(suggested)
+            lister(suggested)
+
+        yield 
+
+    def close(self, reason):
+        print("****************************************SPIDER CLOSING****************************************")
+        final_list = getURLs()
+        final_list.reverse()
+        for url in final_list:
+            print(url)
 
         # In here, we should parse the page, identify the count of words that 
         # match the keywords, and weight them according to matches and extensions

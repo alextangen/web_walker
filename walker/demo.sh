@@ -11,4 +11,4 @@ python3 ../google_search/search.py "$1" > walker/spiders/walker_seeds.txt
 echo "Complete."
 
 echo "Running Web-Walker....."
-sudo scrapy crawl web_walker
+sudo scrapy crawl web_walker -a query="$1"
